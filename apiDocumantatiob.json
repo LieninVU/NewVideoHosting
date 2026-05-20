@@ -161,7 +161,7 @@
     "/auth/register": {
       "post": {
         "summary": "Регистрация нового пользователя",
-        "description": "Создаёт записи в таблицах users и authorizations, присваивает роль клиента (id_role = 3), аватар не назначается.",
+        "description": "Создаёт записи в таблицах users и authorizations, присваивает роль по умолчанию (id_role = 1), аватар не назначается.",
         "operationId": "registerUser",
         "tags": ["Authentication"],
         "requestBody": {

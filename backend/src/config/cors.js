@@ -1,7 +1,8 @@
-const cort = require('cors');
-require('dotnev').config();
+import cors from 'cors';
+import dotenv from 'dotenv';
+dotenv.config();
 
-corsConfig = {
+const corsConfig = {
     origin: process.env.CORS_ORIGIN || '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],

@@ -1,16 +1,16 @@
-const { body } = require('express-validator');
+import { body } from 'express-validator';
 
-exports.validateRegistration = [
-    body('first_name').notEmpty().isLength({max: 200}),
-    body('second_name').notEmpty().isLength({max: 200}),
-    body('father_name').optional().isLength({max: 200}),
-    body('date_of_birth').notEmpty().isDate(),
+export const validateRegistration = [
+    body('firstName').notEmpty().isLength({max: 200}),
+    body('secondName').notEmpty().isLength({max: 200}),
+    body('fatherName').optional().isLength({max: 200}),
+    body('dateOfBirth').notEmpty().isDate(),
     body('login').notEmpty().isLength(200).isEmail(),
     body('password').notEmpty().isLength({min: 6, max: 250}),
-    body('id_avatar').optional().isInt()
-]
+    body('id_role').optional().isInt().default(1)
+];
 
-exports.validateLogin = [
+export const validateLogin = [
     body('login').notEmpty().isLength(200).isEmail(),
     body('password').notEmpty().isLength({min: 6, max: 250})
-]
+];

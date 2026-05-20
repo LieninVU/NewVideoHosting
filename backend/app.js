@@ -1,8 +1,9 @@
-const express = require('express');
-import { corsComfig } from './config/cors.js';
-import pool from './config/database.js';
-const helmet = require('helmet');
-const morgan = require('morgan');
+import express from 'express';
+import corsConfig from './src/config/cors.js';
+import pool from './src/config/database.js';
+import helmet from 'helmet';
+import morgan from 'morgan';
+import authRoutes from './src/routes/authRoutes.js';
 
 const app = express();
 
@@ -11,14 +12,13 @@ app.use(corsConfig);
 app.use(morgan('dev'));
 app.use(express.json());
 
+app.use('/auth', authRoutes);
 
-
-
-app.get('/', (req,res) =>{
+app.get('/', (req, res) => {
     res.send('<h1>Hello World</h1>');
-})
+});
 
-
-
-
-app.listen(3000);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
